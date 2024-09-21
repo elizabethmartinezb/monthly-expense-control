@@ -1,59 +1,58 @@
-let listaNombresGastos = [];
-let listaValoresGastos = [];
-let listaDescripcionGastos = [];
+let expenseNameArray = [];
+let expenseValueArray = [];
+let expenseDescriptionArray = [];
 
-// Función que se invoca al momento en el que el usuario hace clic en el botón gasto.
-function clickBoton () {
-    let nombreGasto = document.getElementById('nombreGasto').value;
-    let valorGasto = Number(document.getElementById('valorGasto').value);
-    let descripcionGasto = document.getElementById('descripcionGasto').value;
+function addExpense () {
+    let expenseName = document.getElementById('expenseName').value;
+    let expenseValue = Number(document.getElementById('expenseValue').value);
+    let expenseDescription = document.getElementById('expenseDescription').value;
 
-    listaNombresGastos.push(nombreGasto);
-    listaValoresGastos.push(valorGasto);
-    listaDescripcionGastos.push(descripcionGasto)
+    expenseNameArray.push(expenseName);
+    expenseValueArray.push(expenseValue);
+    expenseDescriptionArray.push(expenseDescription)
     
-    actualizarListaGastos();
-    alertaGasto(valorGasto);
+    updateExpenseList();
+    expenseAlert(expenseValue);
 }
 
-function actualizarListaGastos() {
-    const listaElementos = document.getElementById('listaDeGastos');
-    const totalElementos = document.getElementById('totalGastos');
+function updateExpenseList() {
+    const expenseList = document.getElementById('expenseList');
+    const totalSum = document.getElementById('expenseTotal');
 
-    let htmlLista = '';
-    let totalGastos = 0;
+    let htmlList = '';
+    let expenseTotal = 0;
 
-    listaNombresGastos.forEach((elemento, posicion) => {
-        const valorGasto = Number(listaValoresGastos[posicion]);
-        const descripcionGasto = listaDescripcionGastos[posicion];
-        htmlLista += `<li>${elemento} - USD ${valorGasto.toFixed(2)} - ${descripcionGasto}
-                        <button class="update-btn">Actualizar</button></li><button onclick="eliminarGasto(${posicion});">Eliminar</button></li>`;
+    expenseNameArray.forEach((element, position) => {
+        const expenseValue = Number(expenseValueArray[position]);
+        const expenseDescription = expenseDescriptionArray[position];
+        htmlList += `<li>${element} - USD ${expenseValue.toFixed(2)} - ${expenseDescription}
+                        <button class="update-btn">Update</button></li><button onclick="deleteExpense(${position});">Delete</button></li>`;
         // Calculando el total de los gastos
-        totalGastos += Number(valorGasto);
+        expenseTotal += Number(expenseValue);
     });
 
-    listaElementos.innerHTML = htmlLista;
-    totalElementos.innerHTML = totalGastos.toFixed(2);
-    limpiar();
+    expenseList.innerHTML = htmlList;
+    totalSum.innerHTML = expenseTotal.toFixed(2);
+    cleanFields();
 }
 
-function limpiar() {
-    document.getElementById('nombreGasto').value = '';
-    document.getElementById('valorGasto').value = '';
-    document.getElementById('descripcionGasto').value = '';
+function cleanFields() {
+    document.getElementById('expenseName').value = '';
+    document.getElementById('expenseValue').value = '';
+    document.getElementById('expenseDescription').value = '';
 }
 
-function eliminarGasto(posicion) {
-    console.log(posicion);
+function deleteExpense(position) {
+    console.log(position);
     
-    listaNombresGastos.splice(posicion, 1);
-    listaValoresGastos.splice(posicion, 1);
-    listaDescripcionGastos.splice(posicion, 1);
-    actualizarListaGastos();
+    expenseNameArray.splice(position, 1);
+    expenseValueArray.splice(position, 1);
+    expenseDescriptionArray.splice(position, 1);
+    updateExpenseList();
 }
 
-function alertaGasto(valorGasto) {
-    if(valorGasto > 150) {
-        alert('¡Cuida tus finanzas! \n¡Has realizado un gasto mayor a 150 USD!')
+function expenseAlert(expenseValue) {
+    if(expenseValue > 150) {
+        alert('Take care of your finances.! \nYou have spent more than $150 USD!')
     }
 }
