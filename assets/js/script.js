@@ -25,8 +25,12 @@ function updateExpenseList() {
     expenseNameArray.forEach((element, position) => {
         const expenseValue = Number(expenseValueArray[position]);
         const expenseDescription = expenseDescriptionArray[position];
-        htmlList += `<li>${element} - USD ${expenseValue.toFixed(2)} - ${expenseDescription}
-                        <button class="update-btn">Update</button></li><button onclick="deleteExpense(${position});">Delete</button></li>`;
+        htmlList += `<tr>
+                            <td>${element}</td>
+                            <td>USD ${expenseValue.toFixed(2)}</td>
+                            <td>${expenseDescription}</td>
+                            <td><button class="update-btn m-2"><i class="bi bi-pencil"></i></button><button onclick="deleteExpense(${position});"><i class="bi bi-x-circle"></i></button></td>
+                        </tr>`;
         // Calculando el total de los gastos
         expenseTotal += Number(expenseValue);
     });
