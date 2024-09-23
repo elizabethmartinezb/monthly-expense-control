@@ -33,7 +33,7 @@ El proyecto fue creado como parte de la **Inmersión Dev** de **Alura Latam** du
 
 ## Enlace en GitHub Pages
 Puedes probar el proyecto en vivo a través de **GitHub Pages** aquí:  
-[Control de Gastos Mensuales] https://elizabeth.github.io/control-de-gastos/](https://elizabethmartinezb.github.io/monthly-expense-control/
+[[Control de Gastos Mensuales] https://elizabeth.github.io/control-de-gastos/](https://elizabethmartinezb.github.io/monthly-expense-control/](https://elizabethmartinezb.github.io/monthly-expense-control/)
 
 ## Capturas de pantalla
 ![image](https://github.com/user-attachments/assets/89bac748-9357-4653-9e4e-55f2a08bc0da)
