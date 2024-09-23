@@ -9,7 +9,6 @@ body {
     border-radius: 15px;
     display: grid;
     place-items: center;
-    height: 90vh;
 }
 
 h1 {
@@ -53,7 +52,6 @@ button:hover {
 }
 
 .total {
-    /* margin-top: 5px; */
     font-size: 24px;
     text-align: center;
     color: #fff;
